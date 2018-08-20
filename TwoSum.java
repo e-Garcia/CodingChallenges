@@ -1,21 +1,36 @@
 class Solution {
+    /**
+    https://leetcode.com/problems/two-sum/description/
+    
+    Given an array of integers, return indices of the two numbers such that they add up to a specific target.
+
+    You may assume that each input would have exactly one solution, and you may not use the same element twice.
+
+    Example:
+
+    Given nums = [2, 7, 11, 15], target = 9,
+
+    Because nums[0] + nums[1] = 2 + 7 = 9,
+    return [0, 1].
+
+    **/
 
     private final int INDEX_NOT_FOUND = -1;
     public static final int[] PAIR_NOT_FOUND = new int[0];
     
     /**
     * Returns the indices of two numbers whose sum matches the given target.
+    * The same element cannot be used twice.
     * Ex: sums [9, -1, 1, 12] target 0 ; result in [1,2]
     * a + b = target; a - target = b
     * Time:
     *   Best: O(N)
     *   Worst: O(N²)
-    *   Current: O(N²)
+    *   Current: O(N)
     * Space:
-    *   O(1)
+    *   O(N)
     **/
     public int[] twoSum(int[] nums, int target) {
-        
         
         // Input data validations
         if(nums == null || nums.length == 0) {
@@ -75,14 +90,25 @@ class Solution {
         
         // Traverse numbers and look for the missing pair on the map
         for(int firstNumberIndex = 0; firstNumberIndex < numbers.length; firstNumberIndex++) {
-            final int matchingPair = target - numbers[firstNumberIndex]; // firstNumber + b = target; b = target - firstNumber;
+            final int matchingPair = target - numbers[firstNumberIndex]; // firstNumber + b = target; b = target - firstNumber;  
             final Integer secondNumberIndex = numbersMap.get(matchingPair);
             
-            if(secondNumberIndex != null) {
+            if(secondNumberIndex != null && secondNumberIndex != firstNumberIndex) {
                 return new int[] {firstNumberIndex, secondNumberIndex.intValue()};
             }
         }
         return PAIR_NOT_FOUND;
+    }
+    
+    
+    private void test_simple() {
+        final int[] sampleData = new int[] {3,2,4};
+        final int sampleTarget = 6;
+        final int[] expectedResult = new int[] {1,2};
+        
+        final int[] result = twoSum(sampleData, sampleTarget);
+        
+        assertTrue(Arrays.equals(expectedResult, result));
     }
     
 }
