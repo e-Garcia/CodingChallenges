@@ -1,4 +1,8 @@
-class Solution {
+package ga.egarcia.codingchallenges.solutions;
+
+import java.util.HashMap;
+
+class TwoSum {
     /**
     https://leetcode.com/problems/two-sum/description/
     
@@ -30,7 +34,7 @@ class Solution {
     * Space:
     *   O(N)
     **/
-    public int[] twoSum(int[] nums, int target) {
+    public static int[] twoSum(int[] nums, int target) {
         
         // Input data validations
         if(nums == null || nums.length == 0) {
@@ -78,7 +82,7 @@ class Solution {
     * Space:
     *   O(N)
     **/
-    private int[] findPairHashMap(final int[] numbers, final int target) {
+    private static int[] findPairHashMap(final int[] numbers, final int target) {
         
         // Create a hashmap(K,V) where the number is the key and the value is its index
         final HashMap<Integer, Integer> numbersMap = new HashMap<>();
@@ -98,17 +102,6 @@ class Solution {
             }
         }
         return PAIR_NOT_FOUND;
-    }
-    
-    
-    private void test_simple() {
-        final int[] sampleData = new int[] {3,2,4};
-        final int sampleTarget = 6;
-        final int[] expectedResult = new int[] {1,2};
-        
-        final int[] result = twoSum(sampleData, sampleTarget);
-        
-        assertTrue(Arrays.equals(expectedResult, result));
     }
     
 }
