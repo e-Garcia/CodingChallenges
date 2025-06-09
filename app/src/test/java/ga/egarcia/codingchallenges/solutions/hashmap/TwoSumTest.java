@@ -1,10 +1,8 @@
-package ga.egarcia.codingchallenges.solutions;
+package ga.egarcia.codingchallenges.solutions.hashmap;
 
 import static org.junit.Assert.assertArrayEquals;
 
 import junit.framework.TestCase;
-
-import org.junit.Test;
 
 public class TwoSumTest extends TestCase {
 

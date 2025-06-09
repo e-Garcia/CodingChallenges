@@ -1,25 +1,22 @@
-package ga.egarcia.codingchallenges.solutions;
+package ga.egarcia.codingchallenges.solutions.hashmap;
 
 import java.util.HashMap;
 
 class TwoSum {
     /**
-    https://leetcode.com/problems/two-sum/description/
-    
-    Given an array of integers, return indices of the two numbers such that they add up to a specific target.
+     * Problem: {@link <a href="https://leetcode.com/problems/two-sum/">...</a>}
 
-    You may assume that each input would have exactly one solution, and you may not use the same element twice.
+     Given an array of integers, return indices of the two numbers such that they add up to a specific target.
 
-    Example:
+     You may assume that each input would have exactly one solution, and you may not use the same element twice.
 
-    Given nums = [2, 7, 11, 15], target = 9,
+     Example:
 
-    Because nums[0] + nums[1] = 2 + 7 = 9,
-    return [0, 1].
+     Given nums = [2, 7, 11, 15], target = 9,
 
-    **/
-
-    private final int INDEX_NOT_FOUND = -1;
+     Because nums[0] + nums[1] = 2 + 7 = 9,
+     return [0, 1].
+     **/
     public static final int[] PAIR_NOT_FOUND = new int[0];
     
     /**
@@ -43,7 +40,7 @@ class TwoSum {
         
         // Find two numbers whose sum is target
         return findPairHashMap(nums, target);
-        
+
     }
     
     /**
@@ -54,6 +51,7 @@ class TwoSum {
     * Space:
     *   O(1)
     **/
+    @SuppressWarnings("unused") // kept for educational comparison
     private int[] findPairBruteForce(final int[] numbers, final int target) {
         
         // Search for a matching pair
@@ -98,7 +96,7 @@ class TwoSum {
             final Integer secondNumberIndex = numbersMap.get(matchingPair);
             
             if(secondNumberIndex != null && secondNumberIndex != firstNumberIndex) {
-                return new int[] {firstNumberIndex, secondNumberIndex.intValue()};
+                return new int[] {firstNumberIndex, secondNumberIndex};
             }
         }
         return PAIR_NOT_FOUND;
