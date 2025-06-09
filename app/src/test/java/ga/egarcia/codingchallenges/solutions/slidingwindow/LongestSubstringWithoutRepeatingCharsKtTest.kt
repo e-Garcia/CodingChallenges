@@ -1,6 +1,6 @@
-package ga.egarcia.codingchallenges.solutions
+package ga.egarcia.codingchallenges.solutions.slidingwindow
 
-import junit.framework.TestCase.assertEquals
+import junit.framework.TestCase
 import org.junit.Test
 
 class LongestSubstringWithoutRepeatingCharsKtTest {
@@ -13,7 +13,7 @@ class LongestSubstringWithoutRepeatingCharsKtTest {
         // When
         val actual = lengthOfLongestSubstring(input)
         // Then
-        assertEquals(expectedOutput, actual)
+        TestCase.assertEquals(expectedOutput, actual)
     }
 
     @Test
@@ -24,7 +24,7 @@ class LongestSubstringWithoutRepeatingCharsKtTest {
         // When
         val actual = lengthOfLongestSubstring(input)
         // Then
-        assertEquals(expectedOutput, actual)
+        TestCase.assertEquals(expectedOutput, actual)
     }
 
     @Test
@@ -32,7 +32,7 @@ class LongestSubstringWithoutRepeatingCharsKtTest {
         val input = "abcde"
         val expectedOutput = 5
         val actual = lengthOfLongestSubstring(input)
-        assertEquals(expectedOutput, actual)
+        TestCase.assertEquals(expectedOutput, actual)
     }
 
     @Test
@@ -40,7 +40,7 @@ class LongestSubstringWithoutRepeatingCharsKtTest {
         val input = "aaaaa"
         val expectedOutput = 1
         val actual = lengthOfLongestSubstring(input)
-        assertEquals(expectedOutput, actual)
+        TestCase.assertEquals(expectedOutput, actual)
     }
 
     @Test
@@ -49,7 +49,7 @@ class LongestSubstringWithoutRepeatingCharsKtTest {
         val input = "aabcde"
         val expectedOutput = 5
         val actual = lengthOfLongestSubstring(input)
-        assertEquals(expectedOutput, actual)
+        TestCase.assertEquals(expectedOutput, actual)
     }
 
     @Test
@@ -60,7 +60,7 @@ class LongestSubstringWithoutRepeatingCharsKtTest {
         // When
         val actual = lengthOfLongestSubstring(input)
         // Then
-        assertEquals(expectedOutput, actual)
+        TestCase.assertEquals(expectedOutput, actual)
     }
 
     @Test
@@ -71,7 +71,7 @@ class LongestSubstringWithoutRepeatingCharsKtTest {
         // When
         val actual = lengthOfLongestSubstring(input)
         // Then
-        assertEquals(expectedOutput, actual)
+        TestCase.assertEquals(expectedOutput, actual)
     }
 
     @Test
@@ -82,7 +82,7 @@ class LongestSubstringWithoutRepeatingCharsKtTest {
         // When
         val actual = lengthOfLongestSubstring(input)
         // Then
-        assertEquals(expectedOutput, actual)
+        TestCase.assertEquals(expectedOutput, actual)
     }
 
     @Test
@@ -93,7 +93,7 @@ class LongestSubstringWithoutRepeatingCharsKtTest {
         // When
         val actual = lengthOfLongestSubstring(input)
         // Then
-        assertEquals(expectedOutput, actual)
+        TestCase.assertEquals(expectedOutput, actual)
     }
 
     @Test
@@ -104,7 +104,7 @@ class LongestSubstringWithoutRepeatingCharsKtTest {
         // When
         val actual = lengthOfLongestSubstring(input)
         // Then
-        assertEquals(expectedOutput, actual)
+        TestCase.assertEquals(expectedOutput, actual)
     }
 
     @Test
@@ -115,7 +115,7 @@ class LongestSubstringWithoutRepeatingCharsKtTest {
         // When
         val actual = lengthOfLongestSubstring(input)
         // Then
-        assertEquals(expectedOutput, actual)
+        TestCase.assertEquals(expectedOutput, actual)
     }
 
     @Test
@@ -126,7 +126,7 @@ class LongestSubstringWithoutRepeatingCharsKtTest {
         // When
         val actual = lengthOfLongestSubstring(input)
         // Then
-        assertEquals(expectedOutput, actual)
+        TestCase.assertEquals(expectedOutput, actual)
     }
 
     @Test
@@ -138,7 +138,7 @@ class LongestSubstringWithoutRepeatingCharsKtTest {
         // When
         val actual = lengthOfLongestSubstring(input)
         // Then
-        assertEquals(expectedOutput, actual)
+        TestCase.assertEquals(expectedOutput, actual)
     }
 
     @Test
@@ -149,7 +149,7 @@ class LongestSubstringWithoutRepeatingCharsKtTest {
         // When
         val actual = lengthOfLongestSubstring(input)
         // Then
-        assertEquals(expectedOutput, actual)
+        TestCase.assertEquals(expectedOutput, actual)
     }
 
     @Test
@@ -160,7 +160,7 @@ class LongestSubstringWithoutRepeatingCharsKtTest {
         // When
         val actual = lengthOfLongestSubstring(input)
         // Then
-        assertEquals(expectedOutput, actual)
+        TestCase.assertEquals(expectedOutput, actual)
     }
 
     @Test
@@ -171,7 +171,7 @@ class LongestSubstringWithoutRepeatingCharsKtTest {
         // When
         val actual = lengthOfLongestSubstring(input)
         // Then
-        assertEquals(expectedOutput, actual)
+        TestCase.assertEquals(expectedOutput, actual)
     }
 
     @Test
@@ -182,7 +182,7 @@ class LongestSubstringWithoutRepeatingCharsKtTest {
         // When
         val actual = lengthOfLongestSubstring(input)
         // Then
-        assertEquals(expectedOutput, actual)
+        TestCase.assertEquals(expectedOutput, actual)
     }
 
     @Test
@@ -193,7 +193,7 @@ class LongestSubstringWithoutRepeatingCharsKtTest {
         // When
         val actual = lengthOfLongestSubstring(input)
         // Then
-        assertEquals(expectedOutput, actual)
+        TestCase.assertEquals(expectedOutput, actual)
     }
 
     @Test
@@ -204,7 +204,7 @@ class LongestSubstringWithoutRepeatingCharsKtTest {
         // When
         val actual = lengthOfLongestSubstring(input)
         // Then
-        assertEquals(expectedOutput, actual)
+        TestCase.assertEquals(expectedOutput, actual)
     }
 
     @Test
@@ -213,7 +213,7 @@ class LongestSubstringWithoutRepeatingCharsKtTest {
         val expectedOutput = 3
         val actual = lengthOfLongestSubstring(input)
 
-        assertEquals(expectedOutput, actual)
+        TestCase.assertEquals(expectedOutput, actual)
     }
 
 

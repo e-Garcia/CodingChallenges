@@ -1,4 +1,4 @@
-package ga.egarcia.codingchallenges.solutions
+package ga.egarcia.codingchallenges.solutions.slidingwindow
 
 // Source: https://leetcode.com/problems/longest-substring-without-repeating-characters/
 
