@@ -1,6 +1,6 @@
 # 🧠 CodingChallenges
 
-A collection of algorithmic coding challenges, data structure implementations, and system design exercises written in **Kotlin**. 
+A collection of algorithmic coding challenges, data structure implementations, and system design exercises written in **Kotlin**.
 This repository serves as a personal preparation toolkit for technical interviews (FAANG-level and beyond), competitive programming practice, and teaching others through clean, idiomatic Kotlin examples.
 
 ---
@@ -32,9 +32,11 @@ This repository serves as a personal preparation toolkit for technical interview
 ```
 CodingChallenges/
 ├── src/
-│   └── main/kotlin/ga/egarcia/codingchallenges/solutions/  ← challenge solutions
+│   └── main/kotlin/ga/egarcia/codingchallenges/solutions/hashmap/           ← HashMap problems
+│   └── main/kotlin/ga/egarcia/codingchallenges/solutions/tree/              ← Tree traversal problems
+│   └── main/kotlin/ga/egarcia/codingchallenges/solutions/                   ← Other algorithms
 ├── src/
-│   └── test/kotlin/ga/egarcia/codingchallenges/solutions/  ← unit tests
+│   └── test/kotlin/ga/egarcia/codingchallenges/solutions/                   ← Unit tests
 ├── build.gradle.kts
 └── README.md
 ```
@@ -46,7 +48,8 @@ CodingChallenges/
 | Problem                                                   | Approach        | Difficulty |
 |-----------------------------------------------------------|-----------------|------------|
 | [Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/) | Sliding Window   | Medium     |
-| Binary Tree Right Side View *(coming soon)*               | BFS/DFS         | Medium     |
+| [Two Sum](https://leetcode.com/problems/two-sum/)         | HashMap         | Easy       |
+| [Binary Tree Right Side View](https://leetcode.com/problems/binary-tree-right-side-view/) | DFS + Merge Logic | Medium     |
 | Retry with Exponential Backoff *(planned)*                | Coroutine Flow  | Medium     |
 
 > Want to contribute or request a problem to be added? Open an issue or PR.
