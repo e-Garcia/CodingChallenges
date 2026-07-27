@@ -9,34 +9,34 @@ package ga.egarcia.codingchallenges.solutions.slidingwindow
  */
 fun lengthOfLongestSubstring(s: String): Int {
     var largestSubstringLength = 0
-
-    // Tracks the last seen index of each character in the string
-    // Key: character, Value: index where it was last seen
     val lastCharSeenMap = mutableMapOf<Char, Int>()
-    var left = 0  // Start index of the current non-repeating window
+    var left = 0
 
-    // Iterate through each character by index
     for (i in s.indices) {
         val char = s[i]
-        val right = i
+        println("c:$char l:$left r:$i lcs:$lastCharSeenMap")
 
-        // Debug: current character, window bounds, and state of the map
-        println("c:$char l:$left r:$right lcs:$lastCharSeenMap")
-
-        if (lastCharSeenMap.contains(char)) {
-            // Character has been seen before — may need to shrink the window
-            val lastCharSeenIndex = lastCharSeenMap[char] ?: 0
-            // Move 'left' only forward to avoid including the repeated character
+        if (lastCharSeenMap.containsKey(char)) {
+            val lastCharSeenIndex = lastCharSeenMap[char]!!
             left = maxOf(left, lastCharSeenIndex + 1)
         }
 
-        // Calculate the length of the current non-repeating window
-        val currentSubstringLength = right - left + 1
-        largestSubstringLength = maxOf(currentSubstringLength, largestSubstringLength)
-
-        // Update the map with the current character's latest index
-        lastCharSeenMap[char] = right
+        largestSubstringLength = maxOf(largestSubstringLength, i - left + 1)
+        lastCharSeenMap[char] = i
     }
 
     return largestSubstringLength
 }
+
+/**
+ * Kotlin syntax shortcuts for map operations:
+ *
+ * Java:    map.put(key, map.getOrDefault(key, 0) + 1)
+ * Kotlin:  map[key] = map.getOrDefault(key, 0) + 1   ← bracket syntax
+ * Kotlin:  map.compute(key) { _, v -> (v ?: 0) + 1 }   ← no double lookup
+ *
+ * For your code, replace:
+ *   seenCharMap.put(value, seenCharMap.getOrDefault(value, 0) + 1)
+ * With:
+ *   seenCharMap[value] = seenCharMap.getOrDefault(value, 0) + 1
+ */
