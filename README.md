@@ -19,11 +19,12 @@ This repository serves as a personal preparation toolkit for technical interview
 
 | Stack      | Details          |
 |------------|------------------|
-| Language   | Kotlin 1.9+      |
-| Build Tool | Gradle + Kotlin DSL |
-| Testing    | JUnit 5          |
-| CI         | GitHub Actions *(planned)* |
-| Linting    | ktlint *(recommended)* |
+| Language   | Kotlin 1.9.23 (with a couple of legacy Java solutions) |
+| Platform   | Android application module (`com.android.application`), min SDK 15 / target SDK 34 |
+| Build Tool | Gradle (Groovy DSL) + Android Gradle Plugin 8.10.1 |
+| Testing    | JUnit 4                                          |
+| CI         | GitHub Actions *(planned)*                       |
+| Linting    | ktlint *(recommended)*                           |
 
 ---
 
@@ -31,15 +32,20 @@ This repository serves as a personal preparation toolkit for technical interview
 
 ```
 CodingChallenges/
-├── src/
-│   └── main/kotlin/ga/egarcia/codingchallenges/solutions/hashmap/           ← HashMap problems
-│   └── main/kotlin/ga/egarcia/codingchallenges/solutions/tree/              ← Tree traversal problems
-│   └── main/kotlin/ga/egarcia/codingchallenges/solutions/                   ← Other algorithms
-├── src/
-│   └── test/kotlin/ga/egarcia/codingchallenges/solutions/                   ← Unit tests
-├── build.gradle.kts
+├── app/
+│   ├── src/main/java/ga/egarcia/codingchallenges/
+│   │   ├── solutions/hashmap/        ← HashMap problems (e.g. Two Sum)
+│   │   ├── solutions/slidingwindow/  ← Sliding window problems
+│   │   ├── solutions/binarytree/     ← Tree traversal problems
+│   │   ├── solutions/patterns/       ← Pattern-printing warm-ups
+│   │   └── ui/                       ← Minimal Android app shell used to host/demo solutions
+│   └── src/test/java/ga/egarcia/codingchallenges/solutions/  ← Unit tests, mirroring the package above
+├── build.gradle
+├── app/build.gradle
 └── README.md
 ```
+
+> Each new topic (stack, linked list, binary search, graph, heap, backtracking, DP, greedy, design, ...) gets its own package under `solutions/`, matching the pattern above.
 
 ---
 
@@ -50,17 +56,34 @@ CodingChallenges/
 | [Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/) | Sliding Window   | Medium     |
 | [Two Sum](https://leetcode.com/problems/two-sum/)         | HashMap         | Easy       |
 | [Binary Tree Right Side View](https://leetcode.com/problems/binary-tree-right-side-view/) | DFS + Merge Logic | Medium     |
-| Retry with Exponential Backoff *(planned)*                | Coroutine Flow  | Medium     |
+| Diamond Pattern                                            | Nested Loops    | Easy       |
 
 > Want to contribute or request a problem to be added? Open an issue or PR.
+
+---
+
+## 🗺️ Roadmap
+
+Tracked as GitHub issues, in the order they're intended to be tackled — each closes a gap in interview-critical categories not yet covered above:
+
+1. [Valid Parentheses](https://github.com/e-Garcia/CodingChallenges/issues/9) — Stack
+2. [Reverse Linked List](https://github.com/e-Garcia/CodingChallenges/issues/10) — Linked List
+3. [Search in Rotated Sorted Array](https://github.com/e-Garcia/CodingChallenges/issues/11) — Binary Search
+4. [Validate Binary Search Tree](https://github.com/e-Garcia/CodingChallenges/issues/12) — Trees
+5. [Number of Islands](https://github.com/e-Garcia/CodingChallenges/issues/13) — Graph BFS/DFS
+6. [Kth Largest Element in an Array](https://github.com/e-Garcia/CodingChallenges/issues/14) — Heap
+7. [Subsets](https://github.com/e-Garcia/CodingChallenges/issues/15) — Backtracking
+8. [House Robber](https://github.com/e-Garcia/CodingChallenges/issues/16) — Dynamic Programming
+9. [Jump Game](https://github.com/e-Garcia/CodingChallenges/issues/17) — Greedy
+10. [LRU Cache](https://github.com/e-Garcia/CodingChallenges/issues/18) — Design (HashMap + Linked List)
 
 ---
 
 ## 🚀 How to Run
 
 ```bash
-# Run tests
-./gradlew test
+# Run unit tests for the app module
+./gradlew :app:testDebugUnitTest
 ```
 
 ---
