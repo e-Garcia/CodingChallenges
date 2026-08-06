@@ -37,11 +37,11 @@ fun numIslands(grid: Array<CharArray>): Int {
     return numIslands
 }
 
-private val directions = listOf(-1 to 0, 1 to 0, 0 to 1, 0 to -1) // up, down, right, left
+private val directions = listOf(Pair(-1, 0), Pair(1, 0), Pair(0, 1), Pair(0, -1)) // up, down, right, left
 
 private fun floodFill(startR: Int, startC: Int, grid: Array<CharArray>, visitedGrid: Array<BooleanArray>) {
     val queue = ArrayDeque<Pair<Int, Int>>()
-    queue.add(startR to startC)
+    queue.add(Pair(startR, startC))
     visitedGrid[startR][startC] = true
 
     while (queue.isNotEmpty()) {
@@ -58,7 +58,7 @@ private fun floodFill(startR: Int, startC: Int, grid: Array<CharArray>, visitedG
 
                 if (isLand && !isVisited) {
                     visitedGrid[neighborRow][neighborColumn] = true
-                    queue.add(neighborRow to neighborColumn)
+                    queue.add(Pair(neighborRow, neighborColumn))
                 }
             }
         }
