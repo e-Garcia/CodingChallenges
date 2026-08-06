@@ -9,3 +9,14 @@
 /build
 /captures
 .externalNativeBuild
+
+# Personal interview prep — never commit/push
+/interview-prep/
+app/src/main/java/ga/egarcia/codingchallenges/interviewprep/
+app/src/test/java/ga/egarcia/codingchallenges/interviewprep/
+
+# Claude Code / agent context — never commit/push
+.claude/
+CLAUDE.md
+AGENTS.md
+.mcp.json
