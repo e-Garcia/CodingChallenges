@@ -37,6 +37,9 @@ CodingChallenges/
 │   │   ├── solutions/hashmap/        ← HashMap problems (e.g. Two Sum)
 │   │   ├── solutions/slidingwindow/  ← Sliding window problems
 │   │   ├── solutions/binarytree/     ← Tree traversal problems
+│   │   ├── solutions/graph/          ← Graph/grid BFS-DFS problems
+│   │   ├── solutions/matrix/         ← Matrix indexing/binary search problems
+│   │   ├── solutions/roman/          ← Roman numeral conversion problems
 │   │   ├── solutions/patterns/       ← Pattern-printing warm-ups
 │   │   └── ui/                       ← Minimal Android app shell used to host/demo solutions
 │   └── src/test/java/ga/egarcia/codingchallenges/solutions/  ← Unit tests, mirroring the package above
@@ -56,6 +59,10 @@ CodingChallenges/
 | [Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/) | Sliding Window   | Medium     |
 | [Two Sum](https://leetcode.com/problems/two-sum/)         | HashMap         | Easy       |
 | [Binary Tree Right Side View](https://leetcode.com/problems/binary-tree-right-side-view/) | DFS + Merge Logic | Medium     |
+| [Roman to Integer](https://leetcode.com/problems/roman-to-integer/) | One-pass subtractive lookup | Easy |
+| [Number of Islands](https://leetcode.com/problems/number-of-islands/) | Grid BFS Flood-Fill | Medium |
+| [Rotting Oranges](https://leetcode.com/problems/rotting-oranges/) | Multi-source BFS | Medium |
+| [Search a 2D Matrix](https://leetcode.com/problems/search-a-2d-matrix/) | Flattened-Index Binary Search | Medium |
 | Diamond Pattern                                            | Nested Loops    | Easy       |
 
 > Want to contribute or request a problem to be added? Open an issue or PR.
@@ -70,12 +77,11 @@ Tracked as GitHub issues, in the order they're intended to be tackled — each c
 2. [Reverse Linked List](https://github.com/e-Garcia/CodingChallenges/issues/10) — Linked List
 3. [Search in Rotated Sorted Array](https://github.com/e-Garcia/CodingChallenges/issues/11) — Binary Search
 4. [Validate Binary Search Tree](https://github.com/e-Garcia/CodingChallenges/issues/12) — Trees
-5. [Number of Islands](https://github.com/e-Garcia/CodingChallenges/issues/13) — Graph BFS/DFS
-6. [Kth Largest Element in an Array](https://github.com/e-Garcia/CodingChallenges/issues/14) — Heap
-7. [Subsets](https://github.com/e-Garcia/CodingChallenges/issues/15) — Backtracking
-8. [House Robber](https://github.com/e-Garcia/CodingChallenges/issues/16) — Dynamic Programming
-9. [Jump Game](https://github.com/e-Garcia/CodingChallenges/issues/17) — Greedy
-10. [LRU Cache](https://github.com/e-Garcia/CodingChallenges/issues/18) — Design (HashMap + Linked List)
+5. [Kth Largest Element in an Array](https://github.com/e-Garcia/CodingChallenges/issues/14) — Heap
+6. [Subsets](https://github.com/e-Garcia/CodingChallenges/issues/15) — Backtracking
+7. [House Robber](https://github.com/e-Garcia/CodingChallenges/issues/16) — Dynamic Programming
+8. [Jump Game](https://github.com/e-Garcia/CodingChallenges/issues/17) — Greedy
+9. [LRU Cache](https://github.com/e-Garcia/CodingChallenges/issues/18) — Design (HashMap + Linked List)
 
 ---
 
