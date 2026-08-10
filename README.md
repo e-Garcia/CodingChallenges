@@ -39,6 +39,7 @@ CodingChallenges/
 │   │   ├── solutions/binarytree/     ← Tree traversal problems
 │   │   ├── solutions/graph/          ← Graph/grid BFS-DFS problems
 │   │   ├── solutions/matrix/         ← Matrix indexing/binary search problems
+│   │   ├── solutions/stack/          ← Stack and monotonic stack problems
 │   │   ├── solutions/roman/          ← Roman numeral conversion problems
 │   │   ├── solutions/patterns/       ← Pattern-printing warm-ups
 │   │   └── ui/                       ← Minimal Android app shell used to host/demo solutions
@@ -63,6 +64,9 @@ CodingChallenges/
 | [Number of Islands](https://leetcode.com/problems/number-of-islands/) | Grid BFS Flood-Fill | Medium |
 | [Rotting Oranges](https://leetcode.com/problems/rotting-oranges/) | Multi-source BFS | Medium |
 | [Search a 2D Matrix](https://leetcode.com/problems/search-a-2d-matrix/) | Flattened-Index Binary Search | Medium |
+| [Longest Repeating Character Replacement](https://leetcode.com/problems/longest-repeating-character-replacement/) | Sliding Window (monotonic high-water mark) | Medium |
+| [Valid Parentheses](https://leetcode.com/problems/valid-parentheses/) | Stack | Easy |
+| [Daily Temperatures](https://leetcode.com/problems/daily-temperatures/) | Monotonic Stack | Medium |
 | Diamond Pattern                                            | Nested Loops    | Easy       |
 
 > Want to contribute or request a problem to be added? Open an issue or PR.
@@ -73,14 +77,13 @@ CodingChallenges/
 
 Tracked as GitHub issues, in the order they're intended to be tackled — each closes a gap in interview-critical categories not yet covered above:
 
-1. [Valid Parentheses](https://github.com/e-Garcia/CodingChallenges/issues/9) — Stack
-2. [Reverse Linked List](https://github.com/e-Garcia/CodingChallenges/issues/10) — Linked List
-3. [Search in Rotated Sorted Array](https://github.com/e-Garcia/CodingChallenges/issues/11) — Binary Search
-4. [Validate Binary Search Tree](https://github.com/e-Garcia/CodingChallenges/issues/12) — Trees
-5. [Kth Largest Element in an Array](https://github.com/e-Garcia/CodingChallenges/issues/14) — Heap
-6. [Subsets](https://github.com/e-Garcia/CodingChallenges/issues/15) — Backtracking
-7. [House Robber](https://github.com/e-Garcia/CodingChallenges/issues/16) — Dynamic Programming
-8. [Jump Game](https://github.com/e-Garcia/CodingChallenges/issues/17) — Greedy
+1. [Reverse Linked List](https://github.com/e-Garcia/CodingChallenges/issues/10) — Linked List
+2. [Search in Rotated Sorted Array](https://github.com/e-Garcia/CodingChallenges/issues/11) — Binary Search
+3. [Validate Binary Search Tree](https://github.com/e-Garcia/CodingChallenges/issues/12) — Trees
+4. [Kth Largest Element in an Array](https://github.com/e-Garcia/CodingChallenges/issues/14) — Heap
+5. [Subsets](https://github.com/e-Garcia/CodingChallenges/issues/15) — Backtracking
+6. [House Robber](https://github.com/e-Garcia/CodingChallenges/issues/16) — Dynamic Programming
+7. [Jump Game](https://github.com/e-Garcia/CodingChallenges/issues/17) — Greedy
 9. [LRU Cache](https://github.com/e-Garcia/CodingChallenges/issues/18) — Design (HashMap + Linked List)
 
 ---
