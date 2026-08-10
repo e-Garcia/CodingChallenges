@@ -69,6 +69,7 @@ CodingChallenges/
 | [Valid Parentheses](https://leetcode.com/problems/valid-parentheses/) | Stack | Easy |
 | [Daily Temperatures](https://leetcode.com/problems/daily-temperatures/) | Monotonic Stack | Medium |
 | [Kth Largest Element in an Array](https://leetcode.com/problems/kth-largest-element-in-an-array/) | Min-Heap Capped at Size K | Medium |
+| [Top K Frequent Elements](https://leetcode.com/problems/top-k-frequent-elements/) | Frequency Count + Min-Heap | Medium |
 | Diamond Pattern                                            | Nested Loops    | Easy       |
 
 > Want to contribute or request a problem to be added? Open an issue or PR.
