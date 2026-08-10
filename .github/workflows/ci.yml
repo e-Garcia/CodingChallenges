@@ -1,0 +1,50 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [master]
+
+jobs:
+  test:
+    name: Unit tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Run unit tests
+        run: ./gradlew testDebugUnitTest
+
+  docs-check:
+    name: README updated for new exercises
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check README is updated when a new exercise is added
+        run: |
+          BASE="origin/${{ github.base_ref }}"
+
+          NEW_SOLUTIONS=$(git diff --name-only --diff-filter=A "$BASE"...HEAD -- 'app/src/main/java/*/*/*/solutions/**')
+          CHANGED_README=$(git diff --name-only "$BASE"...HEAD -- README.md)
+
+          if [ -n "$NEW_SOLUTIONS" ] && [ -z "$CHANGED_README" ]; then
+            echo "New exercise file(s) added, but README.md wasn't updated in this PR:"
+            echo "$NEW_SOLUTIONS"
+            echo ""
+            echo "Add the new problem to the Featured Problems table (and the directory structure diagram, if it's a new package) in README.md."
+            exit 1
+          fi
+
+          if [ -n "$NEW_SOLUTIONS" ]; then
+            echo "New exercise(s) found and README.md was updated:"
+            echo "$NEW_SOLUTIONS"
+          else
+            echo "No new exercise files in this PR."
+          fi

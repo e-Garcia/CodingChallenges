@@ -23,7 +23,7 @@ This repository serves as a personal preparation toolkit for technical interview
 | Platform   | Android application module (`com.android.application`), min SDK 15 / target SDK 34 |
 | Build Tool | Gradle (Groovy DSL) + Android Gradle Plugin 8.10.1 |
 | Testing    | JUnit 4                                          |
-| CI         | GitHub Actions *(planned)*                       |
+| CI         | GitHub Actions — unit tests + README-updated check required on every PR |
 | Linting    | ktlint *(recommended)*                           |
 
 ---
