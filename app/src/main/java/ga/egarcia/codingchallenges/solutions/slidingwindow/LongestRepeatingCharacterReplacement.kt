@@ -4,21 +4,20 @@ package ga.egarcia.codingchallenges.solutions.slidingwindow
  * LeetCode 424. Longest Repeating Character Replacement
  * https://leetcode.com/problems/longest-repeating-character-replacement/
  *
- * Given a string s and an integer k, you may replace up to k characters in
- * s with any other uppercase letter. Return the length of the longest
+ * Given a string s and an integer k, you can replace up to k characters
+ * with any other uppercase letter. Return the length of the longest
  * substring you can make consist of a single repeated character.
  *
- * s = "ABAB", k = 2    -> 4  (replace both A's, or both B's -> "BBBB"/"AAAA")
- * s = "AABABBA", k = 1 -> 4  ("AABA" -> replace the one B -> "AAAA")
+ * "ABAB", k=2 -> 4 (replace both A's or both B's)
+ * "AABABBA", k=1 -> 4 (replace the B in "AABA")
  *
- * Variable-size sliding window, same shape as Longest Substring Without
- * Repeating Characters, but the "is this window still valid?" check is
- * different: instead of "no duplicate chars", it's "the number of chars
- * that AREN'T the window's most-frequent char is <= k" (those are the ones
- * you'd need to replace).
+ * Same sliding window shape as Longest Substring Without Repeating
+ * Characters, but the validity check differs: the window is valid if
+ * (window size - count of its most frequent char) <= k, since that's how
+ * many characters would need replacing.
  *
- * Time:  O(n) — see the WHY THIS WORKS note below the function.
- * Space: O(1) — frequency map bounded by the fixed uppercase alphabet (26).
+ * Time O(n), space O(1) (frequency map bounded by the 26-letter alphabet).
+ * See WHY THIS WORKS below for why the O(n) bound holds.
  */
 fun characterReplacement(s: String, k: Int): Int {
     val freqMap = mutableMapOf<Char, Int>()
@@ -26,10 +25,8 @@ fun characterReplacement(s: String, k: Int): Int {
     var left = 0
     var maxLength = 0
 
-    // Monotonic high-water mark: the largest repeat-count of any single
-    // character seen in ANY window scanned so far — NOT necessarily the
-    // true max in the CURRENT window (after a shrink, it can be stale/too
-    // high). Never decremented, by design. See WHY THIS WORKS below.
+    // Largest repeat count seen in any window so far, not necessarily the
+    // current window (it's never decremented). See WHY THIS WORKS below.
     var bestRepeatStreakSeenSoFar = 0
 
     for (right in s.indices) {
@@ -38,11 +35,9 @@ fun characterReplacement(s: String, k: Int): Int {
         bestRepeatStreakSeenSoFar = maxOf(bestRepeatStreakSeenSoFar, freqMap.getOrDefault(char, 0))
 
         fun windowSize() = right - left + 1
-        // Not "the true number of replacements this exact window needs" —
-        // it's "how many replacements we'd need IF this window matched our
-        // best streak so far." That framing is what makes the staleness
-        // safe: we're bounding growth against a historical fact, not
-        // re-verifying the current window every time.
+        // Replacements needed if this window matched our best streak so
+        // far, not the true count for the current window. See WHY THIS
+        // WORKS below for why that's fine.
         fun charsNeededIfWeMatchOurBestStreak(): Int = windowSize() - bestRepeatStreakSeenSoFar
         while (charsNeededIfWeMatchOurBestStreak() > k) {
             val firstChar = s[left]
@@ -56,42 +51,33 @@ fun characterReplacement(s: String, k: Int): Int {
     return maxLength
 }
 
-// WHY THIS WORKS despite bestRepeatStreakSeenSoFar being stale/inaccurate
-// for the CURRENT window after a shrink:
+// WHY THIS WORKS
 //
-// 1. windowSize (right - left + 1) is monotonically NON-DECREASING across
-//    the entire run — it only ever stays the same or grows by exactly 1
-//    per step, NEVER drops below a value it already reached. Why: each
-//    step adds exactly 1 to windowSize (right advances by 1), and
-//    bestRepeatStreakSeenSoFar can only stay the same or grow by 1 too —
-//    so the "invalid" check can only be violated by exactly 1 unit, and
-//    exactly one shrink always restores validity.
+// bestRepeatStreakSeenSoFar can be stale for the current window after a
+// shrink, but windowSize still ends up correct.
 //
-// 2. Because windowSize never decreases, its value at the END of the
-//    string is automatically its MAXIMUM across the whole run — maxLength
-//    just tracks the final windowSize, nothing more.
+// windowSize only grows by 1 or stays flat each step, never drops below a
+// value it already reached. Each step, right advances by 1 and
+// bestRepeatStreakSeenSoFar grows by at most 1, so the validity check can
+// only be off by exactly 1 unit, and one shrink always fixes it.
 //
-// 3. Any time windowSize grows PAST its previous record, that growth only
-//    happens because bestRepeatStreakSeenSoFar was JUST freshly raised to
-//    an accurate value (freq[s[right]], not stale) in that same step — so
-//    every new record is genuinely, accurately earned at the moment it's
-//    set. Staleness only ever creeps in AFTER a record is already locked
-//    in, which can only make the window coast at its current size instead
-//    of shrinking further — it can never inflate maxLength beyond a size
-//    that was truly, accurately proven achievable.
+// Since windowSize never decreases, its value at the end of the string is
+// already its maximum, so maxLength just tracks the final windowSize.
 //
-// Verified empirically too: see `Stale version agrees with TrueMax version
-// across many random inputs` in the test file — 2000 random strings, zero
-// disagreements between this version and characterReplacementTrueMax()
-// below, which recomputes the true max from scratch on every single check.
+// Any time windowSize grows past its previous record, bestRepeatStreakSeenSoFar
+// was just freshly and accurately raised in that same step, so every new
+// record is genuinely earned. Staleness only shows up after a record is
+// already locked in, and can only delay a shrink, never inflate the answer.
+//
+// Confirmed empirically too: see the randomized test comparing this against
+// characterReplacementTrueMax(), which recomputes the true max from scratch
+// on every check. 2000 random cases, zero disagreements.
 
-// Comparison version — same algorithm, but with ZERO cleverness: no
-// high-water-mark tracking at all. Every time "the most frequent character's
-// count in the current window" is needed, it's recomputed from scratch by
-// scanning freqMap.values(). Costs a larger constant factor (bounded by the
-// 26-letter alphabet) but is still O(n) overall — kept here as a reference
-// for why the stale-tracking version above is provably equivalent, not just
-// usually right.
+// Same algorithm with no high-water-mark tracking: recomputes the true max
+// frequency from freqMap.values() on every check instead. Larger constant
+// factor (bounded by the 26-letter alphabet) but still O(n) overall. Kept
+// as a reference confirming the stale-tracking version above is equivalent,
+// not just usually right.
 fun characterReplacementTrueMax(s: String, k: Int): Int {
     val freqMap = mutableMapOf<Char, Int>()
 
@@ -117,23 +103,15 @@ fun characterReplacementTrueMax(s: String, k: Int): Int {
     return maxLength
 }
 
-// Option 2 reference (not wired into characterReplacement() above — this is
-// the "if this were production code" version, for future reuse).
+// Reference implementation, not used by characterReplacement() above.
+// Encodes the "never decrement" rule in the type instead of a comment: no
+// setter, no decrement method, only recordIfHigher(). Makes the invariant
+// a compile error to violate instead of a rule to remember.
 //
-// Instead of just documenting "never decrement this variable" and trusting
-// every future reader/editor to honor that rule, encode the invariant in
-// the TYPE: give it no setter and no decrement method, only a way to record
-// a new value if it's higher. Then "accidentally lowering it" becomes a
-// compile error instead of a subtle bug someone introduces under deadline
-// pressure six months from now.
-//
-// Usage would look like:
+// Usage:
 //   val bestRepeatStreakSeenSoFar = HighWaterMark()
-//   ...
 //   bestRepeatStreakSeenSoFar.recordIfHigher(freqMap.getOrDefault(char, 0))
-//   ...
-//   fun charsNeededIfWeMatchOurBestStreak() =
-//       windowSize() - bestRepeatStreakSeenSoFar.value
+//   val charsNeeded = windowSize() - bestRepeatStreakSeenSoFar.value
 class HighWaterMark {
     var value: Int = 0
         private set
