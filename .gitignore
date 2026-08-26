@@ -20,3 +20,12 @@ app/src/test/java/ga/egarcia/codingchallenges/interviewprep/
 CLAUDE.md
 AGENTS.md
 .mcp.json
+
+# Hermes coding cron — agent runtime artifacts, not source code
+.hermes-coding-cron/
+
+# PromptPilot — local agent state
+.promptpilot/
+
+# IntelliJ local IDE state (profiles not tracked by .idea/)
+/.idea/inspectionProfiles/
