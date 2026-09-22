@@ -6,54 +6,42 @@ import org.junit.Test
 
 class DiamondPatternTest {
 
-    @Ignore("Pre-existing failure, unrelated to CI setup — see issue #28 for root cause and fix plan")
     @Test
     fun `printDiamondPattern - basic diamond with n=7`() {
-        val expected = """
-            *
-           ***
-          *****
-         *******
-          *****
-           ***
-            *
-        """.trimIndent()
+        val expected = """   *
+  ***
+ *****
+*******
+ *****
+  ***
+   *""".trimIndent()
 
         assertEquals(expected, printDiamondPattern(7))
     }
 
-    @Ignore("Pre-existing failure, unrelated to CI setup — see issue #28 for root cause and fix plan")
     @Test
     fun `printDiamondPattern - smallest diamond with n=1`() {
-        val expected = """
-         *
-        """.trimIndent()
+        val expected = "*"
 
         assertEquals(expected, printDiamondPattern(1))
     }
 
-    @Ignore("Pre-existing failure, unrelated to CI setup — see issue #28 for root cause and fix plan")
     @Test
     fun `printDiamondPattern - larger diamond with n=3`() {
-        val expected = """
-         *
-        ***
-         *
-        """.trimIndent()
+        val expected = """ *
+***
+ *""".trimIndent()
 
         assertEquals(expected, printDiamondPattern(3))
     }
 
-    @Ignore("Pre-existing failure, unrelated to CI setup — see issue #28 for root cause and fix plan")
     @Test
     fun `printDiamondPattern - larger diamond with n=5`() {
-        val expected = """
-     *
-    ***
-   *****
-    ***
-     *
-        """.trimIndent()
+        val expected = """  *
+ ***
+*****
+ ***
+  *""".trimIndent()
 
         assertEquals(expected, printDiamondPattern(5))
     }
@@ -82,24 +70,23 @@ class DiamondPatternTest {
     fun `printDiamondPattern - output has correct number of lines`() {
         val result = printDiamondPattern(7)
         val lines = result.split("\n")
-        assertEquals(8, lines.size) // n=7 produces 8 lines (upper=4 + lower=4)
+        assertEquals(7, lines.size) // n=7 produces 7 lines (upper=4 + lower=3)
     }
 
     @Test
     fun `printDiamondPattern - middle line is longest`() {
         val result = printDiamondPattern(7)
-        val lines = result.trim().split("\n")
+        val lines = result.split("\n")
         val middleIndex = lines.size / 2
         val middleLine = lines[middleIndex]
         assertTrue("Middle line should be the longest",
             lines.all { it.length <= middleLine.length })
     }
 
-    @Ignore("Pre-existing failure, unrelated to CI setup — see issue #28 for root cause and fix plan")
     @Test
     fun `printDiamondPattern - pattern is symmetric vertically`() {
         val result = printDiamondPattern(7)
-        val lines = result.trim().split("\n")
+        val lines = result.split("\n")
         val half = lines.size / 2
         for (i in 0 until half) {
             assertEquals("Line $i should match line ${lines.size - 1 - i}",
@@ -107,12 +94,11 @@ class DiamondPatternTest {
         }
     }
 
-    @Ignore("Pre-existing failure, unrelated to CI setup — see issue #28 for root cause and fix plan")
     @Test
     fun `printDiamondPattern - leading spaces decrease then increase`() {
         val result = printDiamondPattern(5)
-        val lines = result.trim().split("\n")
-        assertEquals(4, lines[0].length) // 1 leading space + 1 asterisk = 5 chars
-        assertEquals(3, lines[1].length) // 2 leading spaces + 3 asterisks = 5 chars
+        val lines = result.split("\n")
+        assertEquals(3, lines[0].length) // 2 leading spaces + 1 asterisk = 3 chars
+        assertEquals(4, lines[1].length) // 1 leading space + 3 asterisks = 4 chars
     }
 }

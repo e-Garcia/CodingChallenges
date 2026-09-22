@@ -25,32 +25,27 @@ package ga.egarcia.codingchallenges.solutions.patterns
 fun printDiamondPattern(n: Int): String {
     require(n > 0 && n % 2 != 0) { "n must be a positive odd number" }
 
-    val stringBuilder = StringBuilder()
-    val leadingChar = ' '
-    val contentChar = '*'
-    val middle = n / 2
+    val rows = mutableListOf<String>()
 
     // Upper part of the diamond (including middle row)
     for (rowIndex in 0..middle) {
-        val leadingSpaces = middle - rowIndex
-        repeat(leadingSpaces) { stringBuilder.append(leadingChar) }
-
-        val contentLength = 2 * rowIndex + 1
-        repeat(contentLength) { stringBuilder.append(contentChar) }
-
-        stringBuilder.appendLine()
+        rows.add(buildRow(n, rowIndex))
     }
 
-    // Lower part of the diamond
+    // Lower part of the diamond (exclude middle row)
     for (rowIndex in (middle - 1) downTo 0) {
-        val leadingSpaces = middle - rowIndex
-        repeat(leadingSpaces) { stringBuilder.append(leadingChar) }
-
-        val contentLength = 2 * rowIndex + 1
-        repeat(contentLength) { stringBuilder.append(contentChar) }
-
-        stringBuilder.appendLine()
+        rows.add(buildRow(n, rowIndex))
     }
 
-    return stringBuilder.toString()
+    return rows.joinToString("\n")
+}
+
+private fun buildRow(n: Int, rowIndex: Int): String {
+    val leadingChar = ' '
+    val contentChar = '*'
+    val middle = n / 2
+    val leadingSpaces = middle - rowIndex
+    val contentLength = 2 * rowIndex + 1
+
+    return " ".repeat(leadingSpaces) + contentChar.repeat(contentLength)
 }
