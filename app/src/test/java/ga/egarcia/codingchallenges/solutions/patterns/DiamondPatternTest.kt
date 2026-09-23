@@ -14,7 +14,7 @@ class DiamondPatternTest {
 *******
  *****
   ***
-   *""".trimIndent()
+   *"""
 
         assertEquals(expected, printDiamondPattern(7))
     }
@@ -30,7 +30,7 @@ class DiamondPatternTest {
     fun `printDiamondPattern - larger diamond with n=3`() {
         val expected = """ *
 ***
- *""".trimIndent()
+ *"""
 
         assertEquals(expected, printDiamondPattern(3))
     }
@@ -41,7 +41,7 @@ class DiamondPatternTest {
  ***
 *****
  ***
-  *""".trimIndent()
+  *"""
 
         assertEquals(expected, printDiamondPattern(5))
     }

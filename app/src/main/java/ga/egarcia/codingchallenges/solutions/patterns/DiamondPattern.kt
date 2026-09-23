@@ -30,22 +30,20 @@ fun printDiamondPattern(n: Int): String {
 
     // Upper part of the diamond (including middle row)
     for (rowIndex in 0..middle) {
-        rows.add(buildRow(n, rowIndex))
+        rows.add(buildRow(n, rowIndex, middle))
     }
 
     // Lower part of the diamond (exclude middle row)
     for (rowIndex in (middle - 1) downTo 0) {
-        rows.add(buildRow(n, rowIndex))
+        rows.add(buildRow(n, rowIndex, middle))
     }
 
     return rows.joinToString("\n")
 }
 
-private fun buildRow(n: Int, rowIndex: Int): String {
-    val leadingChar = ' '
-    val contentChar = '*'
+private fun buildRow(n: Int, rowIndex: Int, middle: Int): String {
     val leadingSpaces = middle - rowIndex
     val contentLength = 2 * rowIndex + 1
 
-    return " ".repeat(leadingSpaces) + contentChar.repeat(contentLength)
+    return " ".repeat(leadingSpaces) + "*".repeat(contentLength)
 }
