@@ -25,6 +25,7 @@ package ga.egarcia.codingchallenges.solutions.patterns
 fun printDiamondPattern(n: Int): String {
     require(n > 0 && n % 2 != 0) { "n must be a positive odd number" }
 
+    val middle = n / 2
     val rows = mutableListOf<String>()
 
     // Upper part of the diamond (including middle row)
@@ -43,7 +44,6 @@ fun printDiamondPattern(n: Int): String {
 private fun buildRow(n: Int, rowIndex: Int): String {
     val leadingChar = ' '
     val contentChar = '*'
-    val middle = n / 2
     val leadingSpaces = middle - rowIndex
     val contentLength = 2 * rowIndex + 1
 
